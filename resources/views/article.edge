@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Document</title>
+</head>
+<body class='p-8'>
+    @if(article.id == 0)
+        <a href='/get_line/{{article.id - 1}}' class='m-20'> Previous </a>
+    @endif
+    <a href='/get_line/{{article.id + 1}}' class='m-20'> Next </a>
+    <div class="flex-auto text-left">
+        <h1 class="text-3xl font-bold underline mb-6">{{article.title}}</h1>
+        <span> Cree le {{c_date.getMonth()}}/{{c_date.getDate()}}/{{c_date.getUTCFullYear()}} à {{c_date.getUTCHours()}}:{{c_date.getUTCMinutes()}}</span>
+        <br>
+        <span> Edité le {{u_date.getMonth()}}/{{u_date.getDate()}}/{{u_date.getUTCFullYear()}} à {{u_date.getUTCHours()}}:{{u_date.getUTCMinutes()}}</span>
+        <br>
+        <span> {{article.views}} vues </span>
+        <br><br>
+        <p> {{article.content}} </p>
+        <br>
+    </div>
+</body>
+</html>
