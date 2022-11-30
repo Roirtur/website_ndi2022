@@ -39,7 +39,5 @@ Route.get('/get_line/:id', async ({request, view}) => {
   const my_articles = await CreateArticleController.getArticle(id)
   const c_date = new Date(my_articles.created_at)
   const u_date = new Date(my_articles.updated_at)
-  const last_id = my_articles[0].id
-  const first_id = my_articles[:1].id
   return view.render("article", {article:my_articles, c_date, u_date, last_id, first_id})
 })
