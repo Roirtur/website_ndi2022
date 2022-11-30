@@ -24,8 +24,13 @@ import CreateArticleController from 'App/Controllers/articles/CreateArticleContr
 
 Route.post('/save_table', async ({request, response}) => {
   const title = request.input('title')
-  const content = request.input('content')
-  await CreateArticleController.createArticle(title, content)
+  var content = request.input('content')
+  if (title) {
+    if (!content) {
+      content = 'Empty'
+    }
+    await CreateArticleController.createArticle(title, content)
+  }
   return response.redirect('/')
 })
 
@@ -37,7 +42,8 @@ Route.get('/', async ({view}) => {
 Route.get('/get_line/:id', async ({request, view}) => {
   const id = request.param('id')
   const my_articles = await CreateArticleController.getArticle(id)
+  const all_articles = await CreateArticleController.getArticles()
   const c_date = new Date(my_articles.created_at)
   const u_date = new Date(my_articles.updated_at)
-  return view.render("article", {article:my_articles, c_date, u_date, last_id, first_id})
+  return view.render("article", {article:my_articles, c_date, u_date, all_articles})
 })

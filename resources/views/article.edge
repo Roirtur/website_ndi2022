@@ -8,10 +8,21 @@
     <title>Document</title>
 </head>
 <body class='p-8'>
-    @if(article.id == 0)
-        <a href='/get_line/{{article.id - 1}}' class='m-20'> Previous </a>
-    @endif
-    <a href='/get_line/{{article.id + 1}}' class='m-20'> Next </a>
+    <div class="grid grid-cols-3 gap-4 pb-8">
+        <div class='text-center m-3'>
+            @if(all_articles[article.id - 2])
+                <a href='/get_line/{{article.id - 1}}'> Previous </a>
+            @endif
+        </div>
+        <div class='text-center m-3'>
+            <a href='/'> Home </a>
+        </div>
+        <div class='text-center m-3'>
+            @if(all_articles[article.id])
+                <a href='/get_line/{{article.id + 1}}'> Next </a>
+            @endif
+        </div>
+    </div>
     <div class="flex-auto text-left">
         <h1 class="text-3xl font-bold underline mb-6">{{article.title}}</h1>
         <span> Cree le {{c_date.getMonth()}}/{{c_date.getDate()}}/{{c_date.getUTCFullYear()}} à {{c_date.getUTCHours()}}:{{c_date.getUTCMinutes()}}</span>

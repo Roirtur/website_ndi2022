@@ -36,24 +36,26 @@
     <h1 class="text-3xl"> All articles </h1>
     <br>
     @each (article in articles) 
-    <h2 class="text-2xl font-bold"> {{article.id}}. {{article.title}}</h2>
-    <br>
-    <div class="flex">
-        <div class="flex-auto text-left">
-            <span> Cree le {{article.created_at.getMonth()}}/{{article.created_at.getDate()}}/{{article.created_at.getUTCFullYear()}} à {{article.created_at.getUTCHours()}}:{{article.created_at.getUTCMinutes()}}</span>
-            <br>
-            <span> Edité le {{article.created_at.getMonth()}}/{{article.created_at.getDate()}}/{{article.created_at.getUTCFullYear()}} à {{article.created_at.getUTCHours()}}:{{article.created_at.getUTCMinutes()}}</span>
-            <br>
-            <span> {{article.views}} vues </span>
-            <br><br>
-            <p> {{article.content}} </p>
-            <br>
+    <div>
+        <h2 class="text-2xl font-bold"> {{article.id}}. {{article.title}}</h2>
+        <br>
+        <div class="flex">
+            <div class="flex-auto text-left">
+                <span> Cree le {{article.created_at.getMonth()}}/{{article.created_at.getDate()}}/{{article.created_at.getUTCFullYear()}} à {{article.created_at.getUTCHours()}}:{{article.created_at.getUTCMinutes()}}</span>
+                <br>
+                <span> Edité le {{article.updated_at.getMonth()}}/{{article.updated_at.getDate()}}/{{article.updated_at.getUTCFullYear()}} à {{article.updated_at.getUTCHours()}}:{{article.updated_at.getUTCMinutes()}}</span>
+                <br>
+                <span> {{article.views}} vues </span>
+                <br><br>
+                <p> {{article.content}} </p>
+                <br>
+            </div>
+            <div class="flex-auto">
+                <a href="/get_line/{{article.id}}"> View More </a>
+            </div>
         </div>
-        <div class="flex-auto w-64">
-            <a href="/get_line/{{article.id}}"> View More </a>
-        </div>
+        <br>
     </div>
-    <br>
     @end
 </body>
 </html>

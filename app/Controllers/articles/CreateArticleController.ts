@@ -8,7 +8,6 @@ export default class CreateArticleController {
         article.content = content;
         await article.save();
 
-        console.log(article)
         return article;
     }
 
