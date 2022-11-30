@@ -12,21 +12,13 @@
     <br>
     <form action="/save_table" method="POST">
         <div class="relative w-1/3">
-            <div>
-                <label for="title" class='m-6 text-left'> Insert title </label>
-            </div>
-            <div class="absolute top-0 right-0">
-                <input class="border" name="title" id="title"/>
-            </div>
+            <label for="title" class='m-6 text-left'> Insert title </label>
+            <input class="border absolute top-0 right-0" name="title" id="title" required/>
         </div>
         <br>
         <div class="relative w-1/3">
-            <div>
-                <label for="content" class='m-6'> Insert content </label>
-            </div>  
-            <div class="absolute top-0 right-0">
-                <input class="border" name="content" id="content"/>
-            </div>
+            <label for="content" class='m-6'> Insert content </label>
+            <input class="border absolute top-0 right-0" name="content" id="content"/>
         </div>
         <div class="relative w-1/3">
             <button type="submit" class='content-center m-6 px-3 border-2 border-gray-200'>Save</button>

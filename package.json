@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "node ace serve --watch",
     "build": "node ace build --production",
-    "start": "node server.js"
+    "start": "node server.js",
+    "soft-build-unix": "git pull --force && npm i && node ace build --production --ignore-ts-errors && cd build && npm ci --production && cp ../.env.prod ./.env && node ace migration:run --force && node server.js"
   },
   "devDependencies": {
     "@adonisjs/assembler": "^5.9.5",

@@ -18,19 +18,16 @@
 |
 */
 
-import { Request } from '@adonisjs/core/build/standalone'
 import Route from '@ioc:Adonis/Core/Route'
 import CreateArticleController from 'App/Controllers/articles/CreateArticleController'
 
 Route.post('/save_table', async ({request, response}) => {
   const title = request.input('title')
   var content = request.input('content')
-  if (title) {
-    if (!content) {
-      content = 'Empty'
-    }
-    await CreateArticleController.createArticle(title, content)
+  if (!content) {
+    content = 'Empty'
   }
+  await CreateArticleController.createArticle(title, content)
   return response.redirect('/')
 })
 
@@ -42,8 +39,15 @@ Route.get('/', async ({view}) => {
 Route.get('/get_line/:id', async ({request, view}) => {
   const id = request.param('id')
   const my_articles = await CreateArticleController.getArticle(id)
-  const all_articles = await CreateArticleController.getArticles()
-  const c_date = new Date(my_articles.created_at)
-  const u_date = new Date(my_articles.updated_at)
-  return view.render("article", {article:my_articles, c_date, u_date, all_articles})
+  const previous_article = await CreateArticleController.getArticle(id - 1)
+  const next_article = await CreateArticleController.getArticle(id + 1)
+  const c_date = new Date(my_articles?.created_at as unknown as number)
+  const u_date = new Date(my_articles?.updated_at as unknown as number)
+  return view.render("article", {article:my_articles, c_date, u_date, previous_article, next_article})
+})
+
+Route.get('/delete_line/:id', async ({request, response}) => {
+  const id = request.param('id')
+  await CreateArticleController.deleteArticle(id)
+  return response.redirect('/')
 })

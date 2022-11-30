@@ -24,4 +24,10 @@ export default class CreateArticleController {
         const article:Array<Articles|null> = await Database.from('articles').select('*');
         return article;
     }
+
+    public static async deleteArticle(id: number): Promise<boolean> {
+        const article:Articles|null = await Articles.findOrFail(id);
+        article?.delete();
+        return true;
+    }
 }

@@ -10,7 +10,7 @@
 <body class='p-8'>
     <div class="grid grid-cols-3 gap-4 pb-8">
         <div class='text-center m-3'>
-            @if(all_articles[article.id - 2])
+            @if(previous_article)
                 <a href='/get_line/{{article.id - 1}}'> Previous </a>
             @endif
         </div>
@@ -18,7 +18,7 @@
             <a href='/'> Home </a>
         </div>
         <div class='text-center m-3'>
-            @if(all_articles[article.id])
+            @if(next_article)
                 <a href='/get_line/{{article.id + 1}}'> Next </a>
             @endif
         </div>
