@@ -16,6 +16,7 @@
 | import './routes/cart'
 | import './routes/customer''
 | 
+
 }
 */
 
@@ -32,7 +33,7 @@ Route.post('/save_table', async ({request, response}) => {
   return response.redirect('/')
 })
 
-Route.get('/', async ({view}) => {
+Route.get('/home', async ({view}) => {
   const my_articles = await CreateArticleController.getArticles()
   return view.render("home", {articles:my_articles})
 })
@@ -50,5 +51,13 @@ Route.get('/get_line/:id', async ({request, view}) => {
 Route.get('/delete_line/:id', async ({request, response}) => {
   const id = request.param('id')
   await CreateArticleController.deleteArticle(id)
-  return response.redirect('/')
+  return response.redirect('/home')
+})
+
+Route.get('/', async ({view}) => {
+  return view.render("index")
+})
+
+Route.get('/login', async ({view}) => {
+  return view.render("login")
 })
