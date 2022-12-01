@@ -15,7 +15,8 @@
 |
 | import './routes/cart'
 | import './routes/customer''
-|
+| 
+}
 */
 
 import Route from '@ioc:Adonis/Core/Route'
