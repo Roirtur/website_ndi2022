@@ -70,3 +70,7 @@ Route.get('/secretPage1', async ({view}) => {
 Route.get('/path_deux', async ({view}) => {
   return view.render("escapeGame2")
 })
+
+Route.get('/rick', async ({view}) => {
+  return view.render("escapeGame3")
+})
