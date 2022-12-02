@@ -61,3 +61,12 @@ Route.get('/', async ({view}) => {
 Route.get('/login', async ({view}) => {
   return view.render("login")
 })
+
+Route.get('/secretPage1', async ({view}) => {
+  return view.render("escapeGame1")
+})
+
+
+Route.get('/path_deux', async ({view}) => {
+  return view.render("escapeGame2")
+})
